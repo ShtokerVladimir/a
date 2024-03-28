@@ -1,0 +1,33 @@
+li a {
+    color: green;
+}
+/* Разметка блоков */
+header, footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.content {
+    display: flex; /* Используем flexbox для организации блоков */
+}
+
+.main {
+    flex: 3; /* Основной блок занимает 3/4 ширины */
+    padding: 20px;
+    background-color: #f2f2f2;
+}
+
+.sidebar {
+    flex: 1; /* Боковая панель занимает 1/4 ширины */
+    padding: 20px;
+    background-color: #ddd;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
