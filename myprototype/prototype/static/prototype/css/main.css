@@ -1,33 +1,62 @@
-li a {
-    color: green;
-}
-/* Разметка блоков */
-header, footer {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-align: center;
-}
-
-.content {
-    display: flex; /* Используем flexbox для организации блоков */
+body,
+html {
+	margin: 0;
+	padding: 0;
+	font-family: var(--bs-font-sans-serif);
+	height: 100%;
+	background-color: var(--bs-gray-700);
+	color: var(--bs-white);
 }
 
-.main {
-    flex: 3; /* Основной блок занимает 3/4 ширины */
-    padding: 20px;
-    background-color: #f2f2f2;
+main {
+	height: calc(100vh - 56px);
 }
 
-.sidebar {
-    flex: 1; /* Боковая панель занимает 1/4 ширины */
-    padding: 20px;
-    background-color: #ddd;
+.welcome {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	gap: 25px;
+	> p {
+		margin: 0;
+		font-size: 1.5rem;
+		font-weight: bold;
+		opacity: 0.8;
+	}
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
+ol {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	gap: 20px;
+	> li {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 10px;
+		> p {
+			margin: 0;
+			font-size: 1.5rem;
+			font-weight: bold;
+			opacity: 0.8;
+		}
+	}
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: var(--bs-white);
+	&:hover {
+		text-decoration: underline;
+		color: var(--bs-primary);
+		transition: all 0.3s ease;
+	}
 }
