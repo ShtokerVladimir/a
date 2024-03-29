@@ -18,15 +18,19 @@
 		/>
 		<link rel="stylesheet" type="text/css" href="{% static "main.css" %}" />
 		<link rel="stylesheet" type="text/css" href="{% static "login.css" %}" />
+		{% load django_bootstrap5 %}
+		{% include 'base.html' %}
 		<title>{{ title }}</title>
 	</head>
 	<body>
 		<div class="login_form">
 			<h1>Login</h1>
-			<form method="post">
-				{% csrf_token %} {{ form }}
-				<button type="submit">Login</button>
-			</form>
+			<div class="col-md-2">
+				<form method="post" class="form">
+					{% csrf_token %} {% bootstrap_form form %}
+					{% bootstrap_button button_type="submit" content="Login" %}
+				</form>
+			</div>
 			<p>return to <a href={% url 'home' %}>home page</a></p>
 		<div>
 	</body>

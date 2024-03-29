@@ -2,14 +2,7 @@ body,
 html {
 	margin: 0;
 	padding: 0;
-	font-family: var(--bs-font-sans-serif);
 	height: 100%;
-	background-color: var(--bs-gray-700);
-	color: var(--bs-white);
-}
-
-main {
-	height: calc(100vh - 56px);
 }
 
 .welcome {
@@ -53,7 +46,6 @@ li {
 
 a {
 	text-decoration: none;
-	color: var(--bs-white);
 	&:hover {
 		text-decoration: underline;
 		color: var(--bs-primary);

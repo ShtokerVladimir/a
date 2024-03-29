@@ -1,0 +1,18 @@
+{% load django_bootstrap5 %} {% include 'base.html' %}
+<div class="choose_file_form">
+	<h1>Choose a file</h1>
+	<div class="col-md-3">
+		<form method="post" class="form">
+			{% csrf_token %} {% bootstrap_form form %}
+			<button
+				type="submit"
+				class="btn btn-primary"
+				data-bs-toggle="tooltip"
+				data-bs-placement="top"
+				title="Tooltip on top"
+			>
+				Tooltip on top
+			</button>
+		</form>
+	</div>
+</div>

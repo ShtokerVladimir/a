@@ -1,0 +1,19 @@
+main {
+	display: grid;
+	grid-template-rows: 1fr auto;
+	gap: 100px;
+}
+
+.choose_file_form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 25px;
+	> h1 {
+		margin: 0;
+		font-size: 2rem;
+		font-weight: bold;
+		opacity: 0.8;
+	}
+}
