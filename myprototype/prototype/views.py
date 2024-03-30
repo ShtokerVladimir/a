@@ -12,7 +12,9 @@ def home(request):
             form = FileForm(request.POST, request.FILES)
             if form.is_valid():
                 file = form.data.get('file')
-                return HttpResponseBadRequest('No such service yet!')
+                type = form.data.get('type')
+                print(file, type)
+                messages.error(request, 'No such service yet!')
             else:
                 messages.error(request, 'Invalid file')
         else:
