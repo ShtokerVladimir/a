@@ -1,0 +1,7 @@
+asgiref
+django
+django_bootstrap5
+pip
+djangorestframework
+sqlparse
+tzdata
