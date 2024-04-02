@@ -1,18 +1,24 @@
 <header>
-	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item">
-				<a href={% url 'home' %}>home</a>
+	<div class="header">
+		<div>
+			<li>
+				<a class="text-secondary fs-5 link-offset-2 link-underline link-underline-opacity-0" href={% url 'home' %}>Главная</a>
 			</li>
-			{% if user.is_authenticated %}
-			{% else %} 
-			<li class="breadcrumb-item">
-				<a href={% url 'login' %}>login</a>
-			</li>
-			{% endif %}
-			<li class="breadcrumb-item">
-				<a href={% url 'contact' %}>contacts</a>
-			</li>
-		</ol>
-	</nav>
+		</div>
+		<div class=''>
+			<nav>
+				<ol>
+					<li>
+						<a class="text-secondary fs-5 link-offset-2 link-underline link-underline-opacity-0" href={% url 'new_test' %}>Новое тестирование</a>
+					</li>
+					<li>
+						<a class="text-secondary fs-5 link-offset-2 link-underline link-underline-opacity-0" href={% url 'history_test' %}>Последние тестирования</a>
+					</li>
+					<li>
+						<a class="text-secondary fs-5 link-offset-2 link-underline link-underline-opacity-0" href={% url 'test' %}>Тесты</a>
+					</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
 </header>

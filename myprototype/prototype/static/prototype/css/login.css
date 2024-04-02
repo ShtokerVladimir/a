@@ -1,11 +1,28 @@
 body {
 	margin: 0;
 	padding: 0;
-	display: grid;
-	grid-template-rows: 0fr auto;
-	> .login_form {
-		justify-content: center;
+}
+
+header {
+	display: flex;
+	background-color: #d9d9d9;
+	height: 60px;
+	> .header {
+		display: flex;
+		width: 100%;
+		padding-inline: 15rem;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 1rem;
+		color: #000000;
 	}
+}
+
+main {
+	height: calc(100vh - 60px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .login_form {
@@ -13,6 +30,10 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	width: 15%;
+	height: 35%;
+	border-radius: 10px;
+	background-color: #e4e4e4;
 	gap: 25px;
 	> h1 {
 		margin: 0;

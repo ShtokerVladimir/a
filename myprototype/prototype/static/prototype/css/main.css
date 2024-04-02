@@ -46,9 +46,5 @@ li {
 
 a {
 	text-decoration: none;
-	&:hover {
-		text-decoration: underline;
-		color: var(--bs-primary);
-		transition: all 0.3s ease;
-	}
+	color: inherit;
 }
