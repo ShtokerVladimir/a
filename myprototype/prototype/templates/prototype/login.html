@@ -27,8 +27,20 @@
 			<div class="container-sm text-center w-25">
 				<h1 class='fw-normal text-black display-5'>Вход</h1>
 				<div class="container-sm w-75 text-center">
-					<form method="POST" class="form">
+					<form method="POST">
 						{% csrf_token %}
+						{% if messages %}
+                {% for message in messages %}
+                    <div class="alert-{{ message.tags }} rounded alert-dismissible text-center my-4 py-2" role="alert">
+
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{message}}
+
+                    </div>
+                {% endfor %}
+            {% endif %}
 						<input type="text" class="form-control mt-3" title="Логин" id="username" name="username" placeholder="Логин..." />
 						<input type="password" class="form-control mt-3" title="Пароль" id="password" name="password" placeholder="Пароль..." />
 						<button class="btn btn-secondary w-100 mt-3" type="submit">Войти</button>
@@ -37,5 +49,9 @@
 				<span class='mt-2'><a class="text-secondary fw-light link-offset-2 link-underline link-underline-opacity-0" href={% url 'register' %}>Зарегистрироваться</a></span>
 			<div>
 		</main>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>let errorElements = document.getElementsByClassName('alert-error');
+        [...errorElements].forEach(el=>{el.classList.add('alert-danger')})</script>
 	</body>
 </html>

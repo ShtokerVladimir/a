@@ -5,6 +5,21 @@ html {
 	height: 100%;
 }
 
+header {
+	display: flex;
+	background-color: #d9d9d9;
+	height: 60px;
+	> .header {
+		display: flex;
+		width: 100%;
+		padding-inline: 15rem;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 1rem;
+		color: #000000;
+	}
+}
+
 .welcome {
 	display: flex;
 	flex-direction: column;

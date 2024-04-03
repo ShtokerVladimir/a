@@ -1,8 +1,8 @@
 from django.http import HttpResponseBadRequest
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, u
 from django.contrib import messages
-from .forms import LoginForm, FileForm
+from .forms import LoginForm, FileForm, RegisterForm
 from rest_framework.views import View
 from rest_framework.renderers import TemplateHTMLRenderer
 
@@ -66,9 +66,23 @@ def login_view(request):
     return render(request, 'prototype/login.html', context=context)
 
 def register_view(request):
-    context = {
-        'title': 'Register Page',
-    }
+    title = 'Register Page'
+    if request.user.is_authenticated:
+        return redirect('home')
+    elif request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            save_form = form.save(commit=False)
+            save_form.set_password(form.cleaned_data['password'])
+            save_form.save()
+            messages.success(request=request, message='You have successfully registered')
+            return redirect('register')
+        else:
+            context = {
+                'title': title,
+                'form': form
+            }
+            return render(request, 'prototype/register.html', context=context)
     return render(request, 'prototype/register.html', context=context)
 
 def logout_view(request):
