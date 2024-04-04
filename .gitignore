@@ -1,2 +1,5 @@
 env
 *.pem
+**/*.env
+db.sqlite3
+**/staticfiles

@@ -5,3 +5,5 @@ pip
 djangorestframework
 sqlparse
 tzdata
+python-decouple
+psycopg2
