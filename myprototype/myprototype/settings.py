@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "prototype",
     "django_bootstrap5"
 ]
 
@@ -101,7 +102,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'prototype.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -126,7 +126,13 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 STATICFILES_DIRS = [
-    BASE_DIR / "prototype/static/prototype/css",
+    BASE_DIR / "prototype/static/prototype",
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+# Telegram bot
+API_TOKEN = "6438571775:AAGkiDR-83pqe-p3xsxXzZ5KP6I1nN4QOUU"
+
+CHAT_ID = "1167689478"
