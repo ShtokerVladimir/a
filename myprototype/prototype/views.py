@@ -89,6 +89,29 @@ def login_view(request):
 #             return render(request, 'prototype/register.html', context=context)
 #     return render(request, 'prototype/register.html', context=context)
 
+# def register_view(request):
+#     if request.user.is_authenticated:
+#         return redirect('home')
+#     elif request.method == 'POST':
+#         form = RegisterForm(request.POST)
+#         if form.is_valid():
+#             password = form.data.get('password')
+#             confirm_password = form.data.get('confirm_password')
+#             if password != confirm_password:
+#                 send_telegram_message(settings.API_TOKEN, settings.CHAT_ID, 'Passwords do not match')
+#             messages.success(request=request, message='You have successfully registered')
+#             return redirect('register')
+#         else:
+#             messages.error(request=request, message='Invalid data')
+#     else:
+#         form = RegisterForm()
+        
+#     context = {
+#         'title': 'Register Page',
+#         'form': form
+#     }
+#     return render(request, 'prototype/register.html', context=context)
+
 def logout_view(request):
     logout(request)
     return redirect('home')
@@ -124,8 +147,9 @@ def savvahome_view(request):
             if form.is_valid():
                 name = form.data.get('name')
                 text = form.data.get('text')
-                response = send_telegram_message(settings.API_TOKEN, settings.CHAT_ID, f'{text} from {name}')
-                print(response)
+                response = send_telegram_message(settings.API_TOKEN, settings.CHAT_ID, f'<{text}> от {name}')
+                update = get_telegram_info(settings.API_TOKEN, settings.CHAT_ID)
+                print(response, update)
                 if response['ok']:
                     messages.success(request, 'ВЫ ПОЗДРАВИЛИ!')
                 else:
@@ -150,4 +174,9 @@ def send_telegram_message(bot_token, chat_id, text):
         "text": text
     }
     response = requests.post(url, data)
+    return response.json()
+
+def get_telegram_info(bot_token, chat_id):
+    url = f"https://api.telegram.org/bot{bot_token}/getUpdates?offset=-10"
+    response = requests.get(url)
     return response.json()

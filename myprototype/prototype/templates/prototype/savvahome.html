@@ -16,7 +16,7 @@
 	<body>
 		<h1>С днём рождения, брат!</h1>
 		<br />
-		<div class="container-sm m-0 w-50 border-0">
+		<div class="container-md m-0 w-50 border-0">
 			<div class="ratio ratio-16x9">
 				<iframe
 					title="С днём рождения!"
@@ -27,8 +27,23 @@
 		</div>
 		<br />
 		<br />
-		<form method="post">
-			{% csrf_token %} {{ form }}
+		<form method="post" class="d-grid gap-2 w-50">
+			{% csrf_token %}
+			<input
+				type="text"
+				title="Введи твоё имя"
+				name="name"
+				class="form-control"
+				placeholder="Введи твоё имя, чтобы Савва узнал кто ты!"
+			/>
+			<textarea
+				type="text"
+				title="Напиши пожалание"
+				name="text"
+				class="form-control"
+				placeholder="Напиши пожелание"
+				rows="2"
+			></textarea>
 			<button class="btn btn-secondary" type="submit" name="submit_form">
 				Поздравить!
 			</button>
