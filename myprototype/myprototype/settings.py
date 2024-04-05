@@ -134,6 +134,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Telegram bot
-API_TOKEN = "6438571775:AAGkiDR-83pqe-p3xsxXzZ5KP6I1nN4QOUU"
+API_TOKEN = config("API_TOKEN")
 
-CHAT_ID = "1167689478"
+CHAT_ID = config("CHAT_ID")

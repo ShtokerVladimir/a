@@ -1,5 +1,5 @@
 from django.http import HttpResponseBadRequest
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import LoginForm, FileForm, BirthdayGreeterForm
@@ -177,6 +177,6 @@ def send_telegram_message(bot_token, chat_id, text):
     return response.json()
 
 def get_telegram_info(bot_token, chat_id):
-    url = f"https://api.telegram.org/bot{bot_token}/getUpdates?offset=-10"
+    url = f"https://api.telegram.org/bot{bot_token}/getUpdates?offset=-10000"
     response = requests.get(url)
     return response.json()
