@@ -31,12 +31,21 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "prototype",
+    "frontend",
     "django_bootstrap5"
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
 }
 
 MIDDLEWARE = [
@@ -54,7 +63,10 @@ ROOT_URLCONF = "myprototype.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR/"prototype"/"templates"],
+        "DIRS": [
+            BASE_DIR/"prototype"/"templates",
+            BASE_DIR/"frontend"/"templates",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -119,7 +131,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 SECURE_CROSS_ORIGIN_OPENER_POLICY=None
-STATIC_URL = '/static/'
+
+STATIC_URL = '/dist/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -128,10 +141,18 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 STATICFILES_DIRS = [
     BASE_DIR / "prototype/static/prototype",
+    BASE_DIR / "frontend/dist",
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+import mimetypes
+
+mimetypes.add_type("application/javascript", ".js", True)
+
+DEBUG_TOOLBAR_CONFIG = {
+    'INTERCEPT_REDIRECTS': False,
+}
 
 # Telegram bot
 API_TOKEN = config("API_TOKEN")
