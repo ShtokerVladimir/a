@@ -1,9 +1,8 @@
-from django.db import models
-from django.contrib.auth.models import User
+# from django.db import models
 
 
-class User(User):
-	username = models.CharField(max_length=100)
-	email = models.EmailField()
-	password = models.CharField(max_length=100)
-	confirm_password = models.CharField(max_length=100)
+# class User(models.Model):
+# 	username = models.CharField(max_length=100)
+# 	email = models.EmailField()
+# 	password = models.CharField(max_length=100)
+# 	confirm_password = models.CharField(max_length=100)

@@ -16,7 +16,7 @@
 			rel="stylesheet"
 			href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
 		/>
-		<link rel="stylesheet" type="text/css" href="{% static "login.css" %}" />
+		<link rel="stylesheet" type="text/css" href="{% static "css/login.css" %}" />
 		{% load django_bootstrap5 %}
 		{% include 'base.html' %}
 		<title>{{ title }}</title>
@@ -46,7 +46,7 @@
 						<button class="btn btn-secondary w-100 mt-3" type="submit">Войти</button>
 					</form>
 				</div>
-				<span class='mt-2'><a class="text-secondary fw-light link-offset-2 link-underline link-underline-opacity-0" href={% url 'register' %}>Зарегистрироваться</a></span>
+				<span class='mt-2'><a class="text-secondary fw-light link-offset-2 link-underline link-underline-opacity-0" href={% url 'login' %}>Зарегистрироваться</a></span>
 			<div>
 		</main>
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

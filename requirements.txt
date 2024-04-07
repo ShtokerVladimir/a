@@ -7,3 +7,6 @@ sqlparse
 tzdata
 python-decouple
 psycopg2
+aiogram
+celery
+requests
