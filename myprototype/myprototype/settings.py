@@ -32,8 +32,17 @@ INSTALLED_APPS = [
     "rest_framework",
     "prototype",
     "frontend",
-    "django_bootstrap5"
+    "django_bootstrap5",
+    "django_vite",
 ]
+
+DJANGO_VITE = {
+    "default": {
+        "manifest_path": BASE_DIR / "frontend" / "dist" / "manifest.json",
+        "dev_server_host": "localhost",
+        "dev_server_port": 5173,
+    }
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',

@@ -5,7 +5,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
 	plugins: [vue()],
 	build: {
-		manifest: true,
+		manifest: 'manifest.json',
 		rollupOptions: {
 			input: 'src/main.ts',
 		},

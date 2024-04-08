@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Toast from 'primevue/toast'
 import { useToast } from 'primevue/usetoast'
 
 const toast = useToast()
@@ -8,11 +7,27 @@ toast.add({ severity: 'error', summary: 'Error', detail: 'Please login' })
 </script>
 
 <template>
-	<router-view />
-	<Toast />
+	<router-view v-slot="{ Component, route }">
+		<transition name="fade" mode="out-in">
+			<div :key="route.path">
+				<component :is="Component" />
+			</div>
+		</transition>
+	</router-view>
 </template>
 
 <style scoped>
+.fade-enter-active,
+.fade-leave-active {
+	transition-duration: 0.3s;
+	transition-property: opacity;
+	transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+	opacity: 0;
+}
 .logo {
 	height: 6em;
 	padding: 1.5em;

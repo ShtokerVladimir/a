@@ -1,50 +1,26 @@
 <script setup lang="ts">
 import Button from 'primevue/button'
 import InputText from 'primevue/inputtext'
-import Toast from 'primevue/toast'
-import { useToast } from 'primevue/usetoast'
 import { ref } from 'vue'
+import EmailCheckDialog from '../components/EmailCheckDialog.vue'
 import Header from '../components/Header.vue'
 import { useApiStore } from '../stores/api.store'
-
-const toast = useToast()
-
-const showError = () => {
-	if (!apiStore.isLoggedIn) {
-		toast.add({
-			severity: 'error',
-			summary: 'Неверные данные',
-			detail: 'Логин или пароль неверные',
-			life: 3000,
-		})
-	}
-}
-
-const showSuccess = () => {
-	toast.add({
-		severity: 'success',
-		summary: 'Успех',
-		detail: 'Вы вошли в систему',
-		life: 3000,
-	})
-}
 
 const apiStore = useApiStore()
 
 const login = ref('')
 const password = ref('')
+const email = ref('')
+
+const formSubmitted = ref(false)
 
 const loginHandler = async () => {
+	formSubmitted.value = true
 	try {
 		await apiStore.login({
 			username: login.value,
 			password: password.value,
 		})
-		if (!apiStore.isLoggedIn) {
-			showError()
-		} else {
-			showSuccess()
-		}
 	} catch (err) {
 		console.log(err)
 	}
@@ -55,7 +31,7 @@ const loginHandler = async () => {
 	<Header />
 	<main>
 		<div class="container text-center w-25">
-			<h1>Вход</h1>
+			<h1>Регистрация</h1>
 			<form method="POST" @submit.prevent="loginHandler()">
 				<InputText
 					type="text"
@@ -75,6 +51,12 @@ const loginHandler = async () => {
 					placeholder="Пароль..."
 					v-model="password"
 				/>
+				<InputText
+					type="email"
+					title="Почта"
+					placeholder="Почта..."
+					v-model="email"
+				/>
 				<Button
 					:style="{
 						display: 'flex',
@@ -86,14 +68,12 @@ const loginHandler = async () => {
 					severity="secondary"
 					type="submit"
 				>
-					Войти
+					Зарегистрироваться
 				</Button>
 			</form>
-			<span class="mt-2">
-				<RouterLink to="/register">Зарегистрироваться</RouterLink></span
-			>
-			<Toast />
+			<span class="mt-2"> <RouterLink to="/login">Войти</RouterLink></span>
 		</div>
+		<EmailCheckDialog v-if="formSubmitted === true" />
 	</main>
 </template>
 
@@ -110,8 +90,9 @@ main {
 		height: 384px;
 		width: 319px;
 		padding: 0 30px;
+		text-align: center;
 		> h1 {
-			font-size: 44px;
+			font-size: 40px;
 			text-align: center;
 			font-weight: 400;
 			margin: 20px;
