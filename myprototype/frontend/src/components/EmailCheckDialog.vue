@@ -4,10 +4,9 @@
 		:style="{ width: '250px !important', padding: '20px' }"
 		group="headless"
 	>
-		<template #container="{ message, acceptCallback, rejectCallback }">
+		<template #container="{ message, acceptCallback }">
 			<p>
-				Подтвердите свой адрес электронной почты, код подтверждения будет
-				отправлен на вашу почту.
+				{{ message.message }}
 			</p>
 			<form @submit.prevent="acceptCallback()">
 				<InputOtp v-model="emailCode">
@@ -46,11 +45,17 @@ const emailCode = ref()
 const showConfirm = () => {
 	confirm.require({
 		group: 'headless',
-		message: 'We need to verify your email',
+		message:
+			'Подтвердите свой адрес электронной почты, код подтверждения будет отправлен на вашу почту.',
 		icon: 'pi pi-info-circle',
 		header: 'Confirmation',
 		accept: () => {
-			toast.add({ severity: 'info', summary: 'Confirmed', detail: 'Thank you' })
+			toast.add({
+				severity: 'success',
+				summary: 'Confirmed',
+				detail: 'Successfully confirmed',
+				life: 3000,
+			})
 		},
 		reject: () => {
 			toast.add({
