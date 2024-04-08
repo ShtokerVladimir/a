@@ -5,6 +5,7 @@ import Home from './screens/HomePage.vue'
 import LastTestPage from './screens/LastTestPage.vue'
 import LoginPage from './screens/LoginPage.vue'
 import NewTestPage from './screens/NewTestPage.vue'
+import RegisterPage from './screens/RegisterPage.vue'
 
 const routes: RouteRecordRaw[] = [
 	{
@@ -47,7 +48,7 @@ const routes: RouteRecordRaw[] = [
 	{
 		path: '/register',
 		name: 'Register',
-		component: LoginPage,
+		component: RegisterPage,
 	},
 ]
 

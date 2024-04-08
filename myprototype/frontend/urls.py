@@ -9,4 +9,5 @@ urlpatterns = [
 	path('last-test', index, name='index'),
 	path('all-test', index, name='index'),
 	path('login', index, name='login'),
+	path('register', index, name='register'),
 ]
